@@ -10,4 +10,4 @@ windows:
       layout: f310,130x31,0,0{65x31,0,0,0,64x31,66,0,2}
       panes:
         - # Your host terminal goes here
-        - ssh -F ssh.config catec@192.168.21.28
+        - ssh -F ssh.config user@192.168.21.28

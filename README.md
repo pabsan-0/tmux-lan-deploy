@@ -37,9 +37,9 @@ $ apt install tmux tmuxinator            # optional, only for nested sessions
 
 ## Setting up
 
-- [ ] Figure out the IP addresses of all devices
-- [ ] Specify the source on the host
-- [ ] Specify the mount path on clients. Make sure that:
+- [ ] Figure out the IP addresses of all devices. Adjust them in `tmuxinator.yml` and `ssh.config`
+- [ ] Specify the shared dir on the host in `ssh.config` (`sshfs localhost:$PATH ...`)
+- [ ] Specify its mount path on clients in `ssh.config`. Ensure:
     - [ ] Path exists
     - [ ] Is a directory 
     - [ ] Is empty
@@ -51,7 +51,7 @@ Run `./tmuxinator.yml` to start the parent tmux session that will get everything
 
 Be very careful and mind the following:
 
-- Mount point could be left unmounted
+- Mount point could be left unmounted, keep an eye on warnings if any
 - Mount point is read/write for all clients
 - Weird stuff can happen when layering `tmux`
 - Do not put more than one finger in the power plug
