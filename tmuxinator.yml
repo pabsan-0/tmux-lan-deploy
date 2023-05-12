@@ -1,0 +1,13 @@
+#! /usr/bin/env -S tmuxinator start -p
+# Run by executing this file!!
+
+name: MASTER ^A
+tmux_options: -L master -f tmux.conf
+on_project_start: 
+on_project_exit: tmux -L master kill-session
+windows:
+  - main:
+      layout: f310,130x31,0,0{65x31,0,0,0,64x31,66,0,2}
+      panes:
+        - # Your host terminal goes here
+        - ssh -F ssh.config catec@192.168.21.28
