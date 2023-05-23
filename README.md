@@ -37,17 +37,24 @@ $ apt install tmux tmuxinator            # optional, only for nested sessions
 
 ## Setting up
 
-- [ ] Figure out the IP addresses of all devices. Adjust them in `tmuxinator.yml` and `ssh.config`
-- [ ] Specify the shared dir on the host in `ssh.config` (`sshfs localhost:$PATH ...`)
-- [ ] Specify its mount path on clients in `ssh.config`. Ensure:
-    - [ ] Path exists
-    - [ ] Is a directory 
-    - [ ] Is empty
+From the provided boilerplate, adjust the `tmuxinator.yml` and `ssh.config` files to your liking. 
+
+- Tune `tmuxinator.yml` to connect `tmux` panes to your devices: `ssh -F ssh.config user@192.168.21.28`
+- Tune `ssh.config` to define networking behavior for each desired connection.
+    - Ajust target IP addresses
+    - Assign arbitrary unique ports to enable reverse-calling `sshfs`
+    - Specify the shared dir on the host and its mount path on clients
+
+On clients, ensure the mount path exists as an empty directory.
+
+Find a `ssh.config` file overview for a single connection [here](.fig/ssh_config.png).
 
 
 ## Quickstart
 
-Run `./tmuxinator.yml` to start the parent tmux session that will get everything moving. The prefix key has been changed to ^A so that any client can use the default, see and modify the repo's `tmux.conf` file as you like.
+Run `./tmuxinator.yml` to start the parent `tmux` session that will get everything moving. Its prefix key has been changed to `^A` so that any client can use the default, see and modify the repo's `tmux.conf` file as you like.
+
+After you're logged in the remotes, try sweet commands like `ls` or `touch f` to verify that your files are indeed being shared.
 
 Be very careful and mind the following:
 
@@ -55,6 +62,5 @@ Be very careful and mind the following:
 - Mount point is read/write for all clients
 - Weird stuff can happen when layering `tmux`
 - Do not put more than one finger in the power plug
-
 
 
