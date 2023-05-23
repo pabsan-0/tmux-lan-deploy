@@ -7,7 +7,8 @@ on_project_start:
 on_project_exit: tmux -L master kill-session
 windows:
   - main:
-      layout: f310,130x31,0,0{65x31,0,0,0,64x31,66,0,2}
+      layout: even-vertical
       panes:
-        - # Your host terminal goes here
+        - echo "This terminal is in your local PC"
         - ssh -F ssh.config user@192.168.21.28
+        - ssh -F ssh.config user@192.168.21.45
